@@ -20,11 +20,12 @@ export function simulateRaid(raidBoss: Pokemon, {
 }
 
 function showOutcome(outcome: any, metadata?: any): void {
+  const isSteelAttack = outcome.move.type === 'Steel'
   console.log({
     name: `${outcome.defender.teraType} ${outcome.defender.name} - dps: ${outcome.attacker.name}`,
-    raidHp: outcome.defender.stats.hp,
     attack: outcome.move.name,
     dmgPerc: {
+      hp: outcome.defender.stats.hp,
       alone: damagePercLowToHigh(
         outcome.damage as number[],
         outcome.defender.stats.hp
@@ -38,6 +39,11 @@ function showOutcome(outcome: any, metadata?: any): void {
         outcome.damage as number[],
         outcome.defender.stats.hp,
         1.5 * 1.5
+      ),
+      catGang: damagePercLowToHigh(
+        outcome.damage as number[],
+        outcome.defender.stats.hp,
+        1.5 * 1.5 * 1.5
       ),
     },
     ...metadata,
