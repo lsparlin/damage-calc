@@ -72,7 +72,8 @@ var bounds = {
 	"evs": [0, 252],
 	"ivs": [0, 31],
 	"dvs": [0, 15],
-	"move-bp": [0, 65535]
+	"move-bp": [0, 65535],
+    "bossMultiplier": [100, 6000]
 };
 for (var bounded in bounds) {
 	attachValidation(bounded, bounds[bounded][0], bounds[bounded][1]);
@@ -108,6 +109,9 @@ $(".level").keyup(function () {
 });
 $(".nature").bind("keyup change", function () {
 	calcStats($(this).closest(".poke-info"));
+});
+$(".bossMultiplier").bind("keyup change", function () {
+	calcHP($(this).closest(".poke-info"));
 });
 $(".hp .base, .hp .evs, .hp .ivs").bind("keyup change", function () {
 	calcHP($(this).closest(".poke-info"));
@@ -526,6 +530,7 @@ $(".set-selector").change(function () {
 				pokeObj.find(".teraType").val(set.teraType || pokemon.types[0]);
 			}
 			pokeObj.find(".level").val(set.level);
+            pokeObj.find(".bossMultiplier").val(set.bossMultiplier ? set.bossMultiplier : 100);
 			pokeObj.find(".hp .evs").val((set.evs && set.evs.hp !== undefined) ? set.evs.hp : 0);
 			pokeObj.find(".hp .ivs").val((set.ivs && set.ivs.hp !== undefined) ? set.ivs.hp : 31);
 			pokeObj.find(".hp .dvs").val((set.dvs && set.dvs.hp !== undefined) ? set.dvs.hp : 15);
@@ -575,6 +580,7 @@ $(".set-selector").change(function () {
 		} else {
 			pokeObj.find(".teraType").val(pokemon.types[0]);
 			pokeObj.find(".level").val(100);
+            pokeObj.find(".bossMultiplier").val(100);
 			pokeObj.find(".hp .evs").val(0);
 			pokeObj.find(".hp .ivs").val(31);
 			pokeObj.find(".hp .dvs").val(15);
@@ -800,7 +806,7 @@ function createPokemon(pokeInfo) {
 				return move.category !== "Status";
 			});
 		}
-
+        console.log('why am I here ?');
 		return new calc.Pokemon(gen, name, {
 			level: set.level,
 			ability: set.ability,
@@ -845,8 +851,10 @@ function createPokemon(pokeInfo) {
 		// FIXME the Pokemon constructor expects non-dynamaxed HP
 		if (isDynamaxed) curHP = Math.floor(curHP / 2);
 		var types = [pokeInfo.find(".type1").val(), pokeInfo.find(".type2").val()];
+        console.log('calling calcxxxx');
 		return new calc.Pokemon(gen, name, {
 			level: ~~pokeInfo.find(".level").val(),
+            bossMultiplier: ~~pokeInfo.find(".bossMultiplier").val(),
 			ability: ability,
 			abilityOn: pokeInfo.find(".abilityToggle").is(":checked"),
 			item: item,
@@ -927,10 +935,12 @@ function createField() {
 	var terrain = ($("input:checkbox[name='terrain']:checked").val()) ? $("input:checkbox[name='terrain']:checked").val() : "";
 	var isReflect = [$("#reflectL").prop("checked"), $("#reflectR").prop("checked")];
 	var isLightScreen = [$("#lightScreenL").prop("checked"), $("#lightScreenR").prop("checked")];
+    var isDefCheered = [$("#defCheerL").prop("checked"), $("#defCheerR").prop("checked")];
 	var isProtected = [$("#protectL").prop("checked"), $("#protectR").prop("checked")];
 	var isSeeded = [$("#leechSeedL").prop("checked"), $("#leechSeedR").prop("checked")];
 	var isForesight = [$("#foresightL").prop("checked"), $("#foresightR").prop("checked")];
 	var isHelpingHand = [$("#helpingHandL").prop("checked"), $("#helpingHandR").prop("checked")];
+    var isAtkCheered = [$("#atkCheerL").prop("checked"), $("#atkCheerR").prop("checked")];
 	var isTailwind = [$("#tailwindL").prop("checked"), $("#tailwindR").prop("checked")];
 	var isFlowerGift = [$("#flowerGiftL").prop("checked"), $("#flowerGiftR").prop("checked")];
 	var isFriendGuard = [$("#friendGuardL").prop("checked"), $("#friendGuardR").prop("checked")];
@@ -944,9 +954,9 @@ function createField() {
 		return new calc.Side({
 			spikes: spikes[i], isSR: isSR[i], steelsurge: steelsurge[i],
 			vinelash: vinelash[i], wildfire: wildfire[i], cannonade: cannonade[i], volcalith: volcalith[i],
-			isReflect: isReflect[i], isLightScreen: isLightScreen[i],
+			isReflect: isReflect[i], isLightScreen: isLightScreen[i], isDefCheered: isDefCheered[i],
 			isProtected: isProtected[i], isSeeded: isSeeded[i], isForesight: isForesight[i],
-			isTailwind: isTailwind[i], isHelpingHand: isHelpingHand[i], isFlowerGift: isFlowerGift[i], isFriendGuard: isFriendGuard[i],
+			isTailwind: isTailwind[i], isHelpingHand: isHelpingHand[i], isAtkCheered: isAtkCheered[i], isFlowerGift: isFlowerGift[i], isFriendGuard: isFriendGuard[i],
 			isAuroraVeil: isAuroraVeil[i], isBattery: isBattery[i], isPowerSpot: isPowerSpot[i], isSwitching: isSwitchingOut[i] ? 'out' : undefined
 		});
 	};
@@ -996,6 +1006,10 @@ function calcStat(poke, StatID) {
 	if (gen > 7 && StatID === "hp" && poke.isDynamaxed && total !== 1) {
 		total *= 2;
 	}
+
+    if (gen === 9 && StatID === "hp"){
+        total *= ~~(poke.find(".bossMultiplier").val()/100);
+    }
 	stat.find(".total").text(total);
 	return total;
 }

@@ -918,6 +918,11 @@ export function calculateBPModsSMSSSV(
     desc.isHelpingHand = true;
   }
 
+  if (field.attackerSide.isAtkCheered) {
+    bpMods.push(6144);
+    desc.isAtkCheered = true;
+  }
+
   // Field effects
 
   const terrainMultiplier = gen.num > 7 ? 5325 : 6144;
@@ -1434,6 +1439,10 @@ export function calculateFinalModsSMSSSV(
   if (field.defenderSide.isAuroraVeil && !isCritical) {
     finalMods.push(field.gameType !== 'Singles' ? 2732 : 2048);
     desc.isAuroraVeil = true;
+  }
+  if (field.defenderSide.isDefCheered){
+    finalMods.push(2732);
+    desc.isDefCheered = true;
   }
 
   if (attacker.hasAbility('Neuroforce') && typeEffectiveness > 1) {

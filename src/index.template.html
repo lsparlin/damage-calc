@@ -159,6 +159,11 @@
                     <label for="levelL1">Level</label>
                     <input class="level calc-trigger" id="levelL1" value="100" />
                 </div>
+                <div>
+                    <label for="bossMultiplier">HP &times;</label>
+                    <input class="bossMultiplier calc-trigger" id="bossMultiplierL1" value="100" />
+                    <small>%</small>
+                </div>
                 <div class="hide">
                     <label for="weightL1">Weight (kg)</label>
                     <input class="weight calc-trigger" id="weightL1" value="10.0" />
@@ -836,7 +841,7 @@
                         </tr>
                         <tr>
                             <td><div class="left" title="Is this Pok&eacute;mon protected by Reflect and/or Light Screen?">
-                                <div hidden id="selectScreenInstruction">Is this Pok&eacute;mon protected by Reflect and/or Light Screen?</div>
+                                <div hidden id="selectScreenInstruction">Is this Pok&eacute;mon protected by Reflect and/or Light Screen and/or Def cheer?</div>
                                 <input aria-describedby="selectScreenInstruction" class="visually-hidden calc-trigger" type="checkbox" id="reflectL" />
                                 <label class="btn btn-left" for="reflectL">Reflect</label>
                                 <input aria-describedby="selectScreenInstruction" class="visually-hidden calc-trigger" type="checkbox" id="lightScreenL" />
@@ -847,6 +852,17 @@
                                 <label class="btn btn-xwide btn-left" for="lightScreenR">Light Screen</label>
                                 <input aria-describedby="selectScreenInstruction" class="visually-hidden calc-trigger" type="checkbox" id="reflectR" />
                                 <label class="btn btn-right" for="reflectR">Reflect</label>
+                            </div></td>
+                        </tr>
+                        <tr class="gen-specific g9">
+                            <td><div class="left" title="Is this Pok&eacute;mon protected?">
+                                <div hidden id="selectDefCheerInstruction">Is this Pok&eacute;mon boosted by an ally's def cheer?</div>
+                                <input aria-describedby="selectDefCheerInstruction" class="visually-hidden calc-trigger" type="checkbox" id="defCheerL" />
+                                <label class="btn btn-wide" for="defCheerL">def cheer</label>
+                            </div></td>
+                            <td><div class="right" title="Is this Pok&eacute;mon protected?">
+                                <input aria-describedby="selectDefCheerInstruction" class="visually-hidden calc-trigger" type="checkbox" id="defCheerR" />
+                                <label class="btn btn-wide" for="defCheerR">def cheer</label>
                             </div></td>
                         </tr>
                         <tr class="gen-specific g2 g3 g4 g5 g6 g7 g8 g9">
@@ -891,6 +907,17 @@
                             <td><div class="right" title="Has this Pok&eacute;mon's power been boosted by an ally's Helping Hand?">
                                 <input aria-describedby="selectHelpingHandInstruction" class="visually-hidden calc-trigger" type="checkbox" id="helpingHandR" />
                                 <label class="btn btn-xxwide" for="helpingHandR">Helping Hand</label>
+                            </div></td>
+                        </tr>
+                        <tr class="gen-specific g9">
+                            <td><div class="left" title="Has this Pok&eacute;mon's power been boosted by an ally's Atk cheer?">
+                                <div hidden id="selectAtkCheerInstruction">Has this Pok&eacute;mon's power been boosted by an ally's Atk cheer</div>
+                                <input aria-describedby="selectHelpingHandInstruction" class="visually-hidden calc-trigger" type="checkbox" id="atkCheerL" />
+                                <label class="btn btn-xxwide" for="atkCheerL">Atk Cheer</label>
+                            </div></td>
+                            <td><div class="right" title="Has this Pok&eacute;mon's power been boosted by an ally's Helping Hand?">
+                                <input aria-describedby="selectAtkCheerInstruction" class="visually-hidden calc-trigger" type="checkbox" id="atkCheerR" />
+                                <label class="btn btn-xxwide" for="atkCheerR">Atk cheer</label>
                             </div></td>
                         </tr>
                         <tr class="gen-specific g4 g5 g6 g7 g8 g9">
@@ -1037,6 +1064,11 @@
                 <div>
                     <label for="levelR1">Level</label>
                     <input class="level calc-trigger" id="levelR1" value="100" />
+                </div>
+                <div>
+                    <label for="bossMultiplier">HP &times;</label>
+                    <input class="bossMultiplier calc-trigger" id="bossMultiplierR1" value="100" />
+                    <small>%</small>
                 </div>
                 <div class="hide">
                     <label for="weightR1">Weight (kg)</label>
@@ -1543,7 +1575,8 @@
     <script type="text/javascript" src="./calc/util.js?"></script>
     <script type="text/javascript" src="./calc/stats.js?"></script>
     <script type="text/javascript" src="./calc/data/species.js?"></script>
-	 <script type="text/javascript" src="./js/data/sets/gen9.js?"></script>
+    <script type="text/javascript" src="./js/data/sets/raid_bosses.js?"></script>
+	 <!-- <script type="text/javascript" src="./js/data/sets/gen9.js?"></script>
     <script type="text/javascript" src="./js/data/sets/gen8.js?"></script>
     <script type="text/javascript" src="./js/data/sets/gen7.js?"></script>
     <script type="text/javascript" src="./js/data/sets/gen6.js?"></script>
@@ -1551,7 +1584,7 @@
     <script type="text/javascript" src="./js/data/sets/gen4.js?"></script>
     <script type="text/javascript" src="./js/data/sets/gen3.js?"></script>
     <script type="text/javascript" src="./js/data/sets/gen2.js?"></script>
-    <script type="text/javascript" src="./js/data/sets/gen1.js?"></script>
+    <script type="text/javascript" src="./js/data/sets/gen1.js?"></script> -->
     <script type="text/javascript" src="./calc/data/types.js?"></script>
     <script type="text/javascript" src="./calc/data/natures.js?"></script>
     <script type="text/javascript" src="./calc/data/abilities.js?"></script>

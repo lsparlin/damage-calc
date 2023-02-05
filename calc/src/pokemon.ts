@@ -16,6 +16,7 @@ export class Pokemon implements State.Pokemon {
   weightkg: number;
 
   level: number;
+  bossMultiplier: number;
   gender?: I.GenderName;
   ability?: I.AbilityName;
   abilityOn?: boolean;
@@ -56,6 +57,7 @@ export class Pokemon implements State.Pokemon {
     this.weightkg = this.species.weightkg;
 
     this.level = options.level || 100;
+    this.bossMultiplier = options.bossMultiplier || 100;
     this.gender = options.gender || this.species.gender || 'M';
     this.ability = options.ability || this.species.abilities?.[0] || undefined;
     this.abilityOn = !!options.abilityOn;
@@ -91,8 +93,8 @@ export class Pokemon implements State.Pokemon {
     this.stats = {} as I.StatsTable;
     for (const stat of STATS) {
       const val = this.calcStat(gen, stat);
-      this.rawStats[stat] = val;
-      this.stats[stat] = val;
+      this.rawStats[stat] = stat === "hp" ? ~~val*this.bossMultiplier/100 : val;
+      this.stats[stat] =  stat === "hp" ? ~~val*this.bossMultiplier/100 : val;
     }
 
     const curHP = options.curHP || options.originalCurHP;
@@ -100,6 +102,7 @@ export class Pokemon implements State.Pokemon {
     this.status = options.status || '';
     this.toxicCounter = options.toxicCounter || 0;
     this.moves = options.moves || [];
+    console.log(this.stats);
   }
 
   maxHP(original = false) {
@@ -150,6 +153,7 @@ export class Pokemon implements State.Pokemon {
   clone() {
     return new Pokemon(this.gen, this.name, {
       level: this.level,
+      bossMultiplier: this.bossMultiplier,
       ability: this.ability,
       abilityOn: this.abilityOn,
       isDynamaxed: this.isDynamaxed,

@@ -4,6 +4,7 @@ export namespace State {
   export interface Pokemon {
     name: I.SpeciesName;
     level?: number;
+    bossMultiplier?: number;
     ability?: I.AbilityName;
     abilityOn?: boolean;
     isDynamaxed?: boolean;
@@ -62,11 +63,13 @@ export namespace State {
     isSR?: boolean;
     isReflect?: boolean;
     isLightScreen?: boolean;
+    isDefCheered?: boolean;
     isProtected?: boolean;
     isSeeded?: boolean;
     isForesight?: boolean;
     isTailwind?: boolean;
     isHelpingHand?: boolean;
+    isAtkCheered?: boolean;
     isFlowerGift?: boolean;
     isFriendGuard?: boolean;
     isAuroraVeil?: boolean;
