@@ -102,7 +102,6 @@ export class Pokemon implements State.Pokemon {
     this.status = options.status || '';
     this.toxicCounter = options.toxicCounter || 0;
     this.moves = options.moves || [];
-    console.log(this.stats);
   }
 
   maxHP(original = false) {

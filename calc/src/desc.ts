@@ -47,7 +47,9 @@ export interface RawDesc {
   moveName: string;
   moveTurns?: string;
   moveType?: TypeName;
+  powerSpots?: number;
   rivalry?: 'buffed' | 'nerfed';
+  steelySpirits?: number;
   terrain?: Terrain;
   weather?: Weather;
   isDefenderDynamaxed?: boolean;
@@ -885,6 +887,12 @@ function buildDescription(description: RawDesc, attacker: Pokemon, defender: Pok
   }
   if (description.isPowerSpot) {
     output += ' Power Spot boosted ';
+  }
+  if(description.powerSpots){
+    output += `with ${description.powerSpots} Power Spot ${description.powerSpots === 1 ? 'boost' : 'boosts'} `;
+  }
+  if(description.steelySpirits){
+    output += `with ${description.steelySpirits}${attacker.hasAbility('Steely Spirit') ? ' extra' : ''} Steely Spirit${description.steelySpirits === 1 ? ' ' : 's '}`;
   }
   if (description.isSwitching) {
     output += ' switching boosted ';

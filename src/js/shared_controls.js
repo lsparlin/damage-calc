@@ -851,7 +851,6 @@ function createPokemon(pokeInfo) {
 		// FIXME the Pokemon constructor expects non-dynamaxed HP
 		if (isDynamaxed) curHP = Math.floor(curHP / 2);
 		var types = [pokeInfo.find(".type1").val(), pokeInfo.find(".type2").val()];
-        console.log('calling calcxxxx');
 		return new calc.Pokemon(gen, name, {
 			level: ~~pokeInfo.find(".level").val(),
             bossMultiplier: ~~pokeInfo.find(".bossMultiplier").val(),
@@ -947,6 +946,8 @@ function createField() {
 	var isAuroraVeil = [$("#auroraVeilL").prop("checked"), $("#auroraVeilR").prop("checked")];
 	var isBattery = [$("#batteryL").prop("checked"), $("#batteryR").prop("checked")];
 	var isPowerSpot = [$("#powerSpotL").prop("checked"), $("#powerSpotR").prop("checked")];
+    var powerSpots = [~~$("input:radio[name='powerSpotL']:checked").val(), ~~$("input:radio[name='powerSpotR']:checked").val()];
+    var steelySpirits = [~~$("input:radio[name='steelySpiritL']:checked").val(), ~~$("input:radio[name='steelySpiritR']:checked").val()];
 	// TODO: support switching in as well!
 	var isSwitchingOut = [$("#switchingL").prop("checked"), $("#switchingR").prop("checked")];
 
@@ -957,7 +958,8 @@ function createField() {
 			isReflect: isReflect[i], isLightScreen: isLightScreen[i], isDefCheered: isDefCheered[i],
 			isProtected: isProtected[i], isSeeded: isSeeded[i], isForesight: isForesight[i],
 			isTailwind: isTailwind[i], isHelpingHand: isHelpingHand[i], isAtkCheered: isAtkCheered[i], isFlowerGift: isFlowerGift[i], isFriendGuard: isFriendGuard[i],
-			isAuroraVeil: isAuroraVeil[i], isBattery: isBattery[i], isPowerSpot: isPowerSpot[i], isSwitching: isSwitchingOut[i] ? 'out' : undefined
+			isAuroraVeil: isAuroraVeil[i], isBattery: isBattery[i], isPowerSpot: isPowerSpot[i], powerSpots: powerSpots[i], isSwitching: isSwitchingOut[i] ? 'out' : undefined,
+            steelySpirits: steelySpirits[i]
 		});
 	};
 	return new calc.Field({

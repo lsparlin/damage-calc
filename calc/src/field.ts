@@ -93,6 +93,8 @@ export class Side implements State.Side {
   isAuroraVeil: boolean;
   isBattery: boolean;
   isPowerSpot: boolean;
+  powerSpots: number;
+  steelySpirits: number;
   isSwitching?: 'out' | 'in';
 
   constructor(side: State.Side = {}) {
@@ -117,6 +119,8 @@ export class Side implements State.Side {
     this.isAuroraVeil = !!side.isAuroraVeil;
     this.isBattery = !!side.isBattery;
     this.isPowerSpot = !!side.isPowerSpot;
+    this.powerSpots = side.powerSpots || 0;
+    this.steelySpirits = side.steelySpirits || 0;
     this.isSwitching = side.isSwitching;
   }
 

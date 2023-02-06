@@ -19,7 +19,9 @@ function makeCachebuster(template, output) {
 			const filename = c.replace('//play.pokemonshowdown.com/', '../../play.pokemonshowdown.com/');
 			const fstr = fs.readFileSync(path.resolve(rootDir, 'dist', filename), 'utf8');
 			hash = crypto.createHash('md5').update(fstr).digest('hex').substr(0, 8);
-		} catch (e) {}
+		} catch (e) {
+            console.log("error while hashing", e)
+        }
 
 		return b + '="./' + c + '?' + hash + '"';
 	}).replace(/\.template\.html/g, '.html');
