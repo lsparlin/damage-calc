@@ -40,11 +40,13 @@ function showOutcome(outcome: any, metadata?: any): void {
         outcome.defender.stats.hp,
         1.5 * 1.5
       ),
-      catGang: damagePercLowToHigh(
-        outcome.damage as number[],
-        outcome.defender.stats.hp,
-        1.5 * 1.5 * 1.5
-      ),
+      ...isSteelAttack && {
+        catGang: damagePercLowToHigh(
+          outcome.damage as number[],
+          outcome.defender.stats.hp,
+          1.5 * 1.5 * 1.5
+        )
+      },
     },
     ...metadata,
   })
