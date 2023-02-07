@@ -1,16 +1,16 @@
 import {SVMove, Fields} from '../index'
 import RaidBoss from '../lib/raidBoss'
-import AquaTauros from '../lib/attackers/aquaTauros'
+import Kingambit from '../lib/attackers/kingambit'
 import {simulateRaid} from '../lib/simulate'
 
 const buffs = {atk: 6}
-const debuffs = {def: -4}
+const debuffs = {def: -6}
 
 simulateRaid(
-  RaidBoss(6, 'Ground', 'Amoonguss', {debuffs}),
+  RaidBoss(6, 'Ghost', 'Dondozo', {debuffs, ability: 'Water Veil'}),
   {
-    attacker: AquaTauros(buffs),
-    attackerMove: SVMove('Wave Crash'),
+    attacker: Kingambit(buffs),
+    attackerMove: SVMove('Kowtow Cleave'),
     field: Fields.NoEffect,
     metadata: {buffs, debuffs}
   },

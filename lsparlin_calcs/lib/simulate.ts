@@ -22,7 +22,7 @@ export function simulateRaid(raidBoss: Pokemon, {
 function showOutcome(outcome: any, metadata?: any): void {
   const isSteelAttack = outcome.move.type === 'Steel'
   console.log({
-    name: `${outcome.defender.teraType} ${outcome.defender.name} - dps: ${outcome.attacker.name}`,
+    name: `${outcome.defender.teraType} ${outcome.defender.name} - dps: ${outcome.attacker.ability || ''} ${outcome.attacker.name}`,
     attack: outcome.move.name,
     dmgPerc: {
       hp: outcome.defender.stats.hp,

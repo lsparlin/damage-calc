@@ -17,6 +17,7 @@ export default function RaidBoss(
     teraType: TypeName,
     name: string,
     options?: {
+      ability?: string,
       nature?: string,
       debuffs?: Partial<StatsTable>,
     }
@@ -25,6 +26,7 @@ export default function RaidBoss(
     level: STAR_LEVELS[stars],
     teraType: teraType,
     ivs: {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31},
+    ability: options?.ability,
     nature: options?.nature,
     boosts: options?.debuffs,
   })
