@@ -4,7 +4,8 @@ WORKDIR /usr/app
 COPY . /usr/app
 
 RUN apk add nodejs npm
-RUN npm install && cd calc && npm install && cd ..
+run npm install -g typescript tsc
+RUN npm install
 RUN node build
 
 RUN cp -R dist/* /usr/share/nginx/html
