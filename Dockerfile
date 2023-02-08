@@ -4,7 +4,7 @@ WORKDIR /usr/app
 COPY . /usr/app
 
 RUN apk add nodejs npm
-run npm install -g typescript tsc
+run npm install -g typescript
 RUN npm install
 RUN node build
 
