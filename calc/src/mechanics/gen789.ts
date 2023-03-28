@@ -453,7 +453,7 @@ export function calculateSMSSSV(
 
   let baseDamage = getBaseDamage(attacker.level, basePower, attack, defense);
 
-  const isSpread = field.gameType !== 'Singles' &&
+  const isSpread = field.gameType === 'Doubles' &&
      ['allAdjacent', 'allAdjacentFoes'].includes(move.target);
   if (isSpread) {
     baseDamage = pokeRound(OF32(baseDamage * 3072) / 4096);
