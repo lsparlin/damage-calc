@@ -90,12 +90,14 @@ export class Side implements State.Side {
   isAtkCheered: boolean;
   isFlowerGift: boolean;
   isFriendGuard: boolean;
+  friendGuards: number;
   isAuroraVeil: boolean;
   isBattery: boolean;
   isPowerSpot: boolean;
   powerSpots: number;
   steelySpirits: number;
   isSwitching?: 'out' | 'in';
+  isCharged: boolean;
 
   constructor(side: State.Side = {}) {
     this.spikes = side.spikes || 0;
@@ -116,12 +118,14 @@ export class Side implements State.Side {
     this.isAtkCheered = !!side.isAtkCheered;
     this.isFlowerGift = !!side.isFlowerGift;
     this.isFriendGuard = !!side.isFriendGuard;
+    this.friendGuards = side.friendGuards || 0;
     this.isAuroraVeil = !!side.isAuroraVeil;
     this.isBattery = !!side.isBattery;
     this.isPowerSpot = !!side.isPowerSpot;
     this.powerSpots = side.powerSpots || 0;
     this.steelySpirits = side.steelySpirits || 0;
     this.isSwitching = side.isSwitching;
+    this.isCharged = !!side.isCharged;
   }
 
   clone() {

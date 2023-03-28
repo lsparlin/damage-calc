@@ -858,14 +858,14 @@
                             </div></td>
                         </tr>
                         <tr class="gen-specific g9">
-                            <td><div class="left" title="Is this Pok&eacute;mon boosted by an ally's def cheer?">
-                                <div hidden id="selectDefCheerInstruction">Is this Pok&eacute;mon boosted by an ally's def cheer?</div>
+                            <td><div class="left" title="Is this Pok&eacute;mon boosted by an ally's Def Cheer?">
+                                <div hidden id="selectDefCheerInstruction">Is this Pok&eacute;mon boosted by an ally's Def Cheer?</div>
                                 <input aria-describedby="selectDefCheerInstruction" class="visually-hidden calc-trigger" type="checkbox" id="defCheerL" />
-                                <label class="btn btn-wide" for="defCheerL">def cheer</label>
+                                <label class="btn btn-wide" for="defCheerL">Def Cheer</label>
                             </div></td>
-                            <td><div class="right" title="Is this Pok&eacute;mon boosted by an ally's def cheer?">
+                            <td><div class="right" title="Is this Pok&eacute;mon boosted by an ally's Def Cheer?">
                                 <input aria-describedby="selectDefCheerInstruction" class="visually-hidden calc-trigger" type="checkbox" id="defCheerR" />
-                                <label class="btn btn-wide" for="defCheerR">def cheer</label>
+                                <label class="btn btn-wide" for="defCheerR">Def Cheer</label>
                             </div></td>
                         </tr>
                         <tr class="gen-specific g2 g3 g4 g5 g6 g7 g8 g9">
@@ -945,7 +945,7 @@
                                 <label class="btn btn-xxwide" for="flowerGiftR">Flower Gift</label>
                             </div></td>
                         </tr>
-                        <tr class="gen-specific g5 g6 g7 g8 g9">
+                        <tr class="gen-specific g5 g6 g7 g8">
                             <td><div class="left" title="Is the Pok&eacute;mon protected by an ally's Friend Guard?">
                                 <div hidden id="selectFriendGuardInstruction">Is the Pok&eacute;mon protected by an ally's Friend Guard?</div>
                                 <input aria-describedby="selectFriendGuardInstruction" class="visually-hidden calc-trigger" type="checkbox" id="friendGuardL" />
@@ -954,6 +954,29 @@
                             <td><div class="right" title="Is the Pok&eacute;mon protected by an ally's Friend Guard?">
                                 <input aria-describedby="selectFriendGuardInstruction" class="visually-hidden calc-trigger" type="checkbox" id="friendGuardR" />
                                 <label class="btn btn-xxwide" for="friendGuardR">Friend Guard</label>
+                            </div></td>
+                        </tr>
+                        <tr class="gen-specific g9">
+                            <div hidden id="selectFriendGuardInstructionRadio">How many allies have the Friend Guard ability?</div>
+                            <td><div aria-labelledby="selectFriendGuardInstructionRadio" class="left" role="radiogroup" title="How many allies have the Friend Guard ability?">
+                                <input class="visually-hidden calc-trigger" type="radio" name="friendGuardL" value="0" id="friendGuardL0" checked="checked" />
+                                <label class="btn btn-xsmall btn-left" for="friendGuardL0">0</label>
+                                <input class="visually-hidden calc-trigger" type="radio" name="friendGuardL" value="1" id="friendGuardL1" />
+                                <label class="btn btn-xsmall btn-mid" for="friendGuardL1">1</label>
+                                <input class="visually-hidden calc-trigger" type="radio" name="friendGuardL" value="2" id="friendGuardL2" />
+                                <label class="btn btn-xsmall btn-mid" for="friendGuardL2">2</label>
+                                <input class="visually-hidden calc-trigger" type="radio" name="friendGuardL" value="3" id="friendGuardL3" />
+                                <label class="btn btn-wide btn-right" for="friendGuardL3">3 Friend Guard</label>
+                            </div></td>
+                            <td><div aria-labelledby="selectFriendGuardInstructionRadio" class="right" role="radiogroup" title="How many allies have the Friend Guard ability?">
+                                <input class="visually-hidden calc-trigger" type="radio" name="friendGuardR" value="3" id="friendGuardR3" />
+                                <label class="btn btn-wide btn-left" for="friendGuardR3">3 Friend Guard</label>
+                                <input class="visually-hidden calc-trigger" type="radio" name="friendGuardR" value="2" id="friendGuardR2" />
+                                <label class="btn btn-xsmall btn-mid" for="friendGuardR2">2</label>
+                                <input class="visually-hidden calc-trigger" type="radio" name="friendGuardR" value="1" id="friendGuardR1" />
+                                <label class="btn btn-xsmall btn-mid" for="friendGuardR1">1</label>
+                                <input class="visually-hidden calc-trigger" type="radio" name="friendGuardR" value="0" id="friendGuardR0" checked="checked" />
+                                <label class="btn btn-xsmall btn-right" for="friendGuardR0">0</label>
                             </div></td>
                         </tr>
                         <tr class="gen-specific g7 g8 g9">
@@ -978,7 +1001,7 @@
                                 <label class="btn btn-xxwide" for="StatBoostR">+1 All Stats</label>
                             </div></td>
                         </tr>
-                        <tr class="gen-specific g7 g8 "> <!-- g9 -->
+                        <tr class="gen-specific g7 g8 g9"> <!-- g9 -->
                           <td><div class="left" title="Is the Pok&eacute;mon boosted by an ally's Battery ability?">
                               <div hidden id="selectBatteryInstruction">Is the Pok&eacute;mon boosted by an ally's Battery ability?</div>
                                 <input aria-describedby="selectBatteryInstruction" class="visually-hidden calc-trigger" type="checkbox" id="batteryL" />
@@ -1055,6 +1078,17 @@
                             <td><div class="right" title="Is the defending Pok&eacute;mon switching out?">
                                 <input aria-describedby="selectSwitchingInstruction" class="visually-hidden calc-trigger" type="checkbox" id="switchingR" />
                                 <label class="btn btn-xxwide" for="switchingR">Switching Out</label>
+                            </div></td>
+                        </tr>
+                        <tr class="gen-specific g7 g8 g9">
+                            <td><div class="left" title="Is the Pok&eacute;mon charged?">
+                              <div hidden id="selectChargedInstruction">Is the Pok&eacute;mon charged?</div>
+                                <input aria-describedby="selectChargedInstruction" class="visually-hidden calc-trigger" type="checkbox" id="chargedL" />
+                                <label class="btn btn-xxwide" for="chargedL">Charged</label>
+                              </div></td>
+                            <td><div class="right" title="Is the Pok&eacute;mon charged?">
+                                <input aria-describedby="selectChargedInstruction" class="visually-hidden calc-trigger" type="checkbox" id="chargedR" />
+                                <label class="btn btn-xxwide" for="chargedR">Charged</label>
                             </div></td>
                         </tr>
                         <tr>

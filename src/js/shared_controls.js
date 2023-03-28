@@ -943,6 +943,7 @@ function createField() {
 	var isTailwind = [$("#tailwindL").prop("checked"), $("#tailwindR").prop("checked")];
 	var isFlowerGift = [$("#flowerGiftL").prop("checked"), $("#flowerGiftR").prop("checked")];
 	var isFriendGuard = [$("#friendGuardL").prop("checked"), $("#friendGuardR").prop("checked")];
+    var friendGuards = [~~$("input:radio[name='friendGuardL']:checked").val(), ~~$("input:radio[name='friendGuardR']:checked").val()];
 	var isAuroraVeil = [$("#auroraVeilL").prop("checked"), $("#auroraVeilR").prop("checked")];
 	var isBattery = [$("#batteryL").prop("checked"), $("#batteryR").prop("checked")];
 	var isPowerSpot = [$("#powerSpotL").prop("checked"), $("#powerSpotR").prop("checked")];
@@ -950,6 +951,8 @@ function createField() {
     var steelySpirits = [~~$("input:radio[name='steelySpiritL']:checked").val(), ~~$("input:radio[name='steelySpiritR']:checked").val()];
 	// TODO: support switching in as well!
 	var isSwitchingOut = [$("#switchingL").prop("checked"), $("#switchingR").prop("checked")];
+    var isCharged = [$("#chargedL").prop("checked"), $("#chargedR").prop("checked")];
+
 
 	var createSide = function (i) {
 		return new calc.Side({
@@ -957,9 +960,10 @@ function createField() {
 			vinelash: vinelash[i], wildfire: wildfire[i], cannonade: cannonade[i], volcalith: volcalith[i],
 			isReflect: isReflect[i], isLightScreen: isLightScreen[i], isDefCheered: isDefCheered[i],
 			isProtected: isProtected[i], isSeeded: isSeeded[i], isForesight: isForesight[i],
-			isTailwind: isTailwind[i], isHelpingHand: isHelpingHand[i], isAtkCheered: isAtkCheered[i], isFlowerGift: isFlowerGift[i], isFriendGuard: isFriendGuard[i],
+			isTailwind: isTailwind[i], isHelpingHand: isHelpingHand[i], isAtkCheered: isAtkCheered[i],
+            isFlowerGift: isFlowerGift[i], isFriendGuard: isFriendGuard[i], friendGuards: friendGuards[i],
 			isAuroraVeil: isAuroraVeil[i], isBattery: isBattery[i], isPowerSpot: isPowerSpot[i], powerSpots: powerSpots[i], isSwitching: isSwitchingOut[i] ? 'out' : undefined,
-            steelySpirits: steelySpirits[i]
+            steelySpirits: steelySpirits[i], isCharged: isCharged[i]
 		});
 	};
 	return new calc.Field({

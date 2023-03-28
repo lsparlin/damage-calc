@@ -976,11 +976,17 @@ export function calculateBPModsSMSSSV(
     desc.attackerAbility = attacker.ability;
   }
 
+
   if (field.attackerSide.steelySpirits > 0 && move.hasType('Steel')){
     for(var i = 0; i < field.attackerSide.steelySpirits; i++){
         bpMods.push(6144);
     }
     desc.steelySpirits = field.attackerSide.steelySpirits;
+  }
+
+  if (field.attackerSide.isCharged && move.hasType('Electric')){
+    bpMods.push(8196);
+    desc.isCharged = true;
   }
 
   const aura = `${move.type} Aura`;
@@ -1518,6 +1524,13 @@ export function calculateFinalModsSMSSSV(
   if (field.defenderSide.isFriendGuard) {
     finalMods.push(3072);
     desc.isFriendGuard = true;
+  }
+
+  if (field.defenderSide.friendGuards > 0) {
+    for(var i = 0; i < field.defenderSide.friendGuards; ++i){
+        finalMods.push(3072);
+    }
+    desc.friendGuards = field.defenderSide.friendGuards;
   }
 
   if (defender.hasAbility('Fluffy') && move.hasType('Fire')) {

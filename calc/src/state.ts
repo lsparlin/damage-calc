@@ -72,11 +72,13 @@ export namespace State {
     isAtkCheered?: boolean;
     isFlowerGift?: boolean;
     isFriendGuard?: boolean;
+    friendGuards?: number;
     isAuroraVeil?: boolean;
     isBattery?: boolean;
     isPowerSpot?: boolean;
     powerSpots?: number;
     steelySpirits?: number;
     isSwitching?: 'out' | 'in';
+    isCharged?: boolean;
   }
 }

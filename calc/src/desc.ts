@@ -31,6 +31,7 @@ export interface RawDesc {
   isFlowerGiftAttacker?: boolean;
   isFlowerGiftDefender?: boolean;
   isFriendGuard?: boolean;
+  friendGuards?: number;
   isHelpingHand?: boolean;
   isAtkCheered?: boolean;
   isCritical?: boolean;
@@ -53,6 +54,7 @@ export interface RawDesc {
   terrain?: Terrain;
   weather?: Weather;
   isDefenderDynamaxed?: boolean;
+  isCharged?: boolean;
 }
 
 export function display(
@@ -908,6 +910,9 @@ function buildDescription(description: RawDesc, attacker: Pokemon, defender: Pok
   if (description.isSwitching) {
     output += ' switching boosted ';
   }
+  if (description.isCharged) {
+    output += ' charged ';
+  }
   output += description.moveName + ' ';
   if (description.moveBP && description.moveType) {
     output += '(' + description.moveBP + ' BP ' + description.moveType + ') ';
@@ -974,6 +979,9 @@ function buildDescription(description: RawDesc, attacker: Pokemon, defender: Pok
   }
   if (description.isFriendGuard) {
     output += ' with an ally\'s Friend Guard';
+  }
+  if (description.friendGuards) {
+    output += ` with ${description.friendGuards} ${description.friendGuards > 1 ? "allies'" : "ally's"} Friend Guard${description.steelySpirits === 1 ? '' : 's'}`;
   }
   if (description.isAuroraVeil) {
     output += ' with an ally\'s Aurora Veil';
