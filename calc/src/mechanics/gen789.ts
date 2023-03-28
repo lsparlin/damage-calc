@@ -933,9 +933,14 @@ export function calculateBPModsSMSSSV(
     desc.isHelpingHand = true;
   }
 
-  if (field.attackerSide.isAtkCheered) {
+  if (field.attackerSide.isAtkCheered && !move.named('Body Press')) {
     bpMods.push(6144);
     desc.isAtkCheered = true;
+  }
+
+  if (move.named('Body Press') && field.attackerSide.isDefCheered){
+    bpMods.push(6144);
+    desc.isDefCheered = true;
   }
 
   // Field effects
