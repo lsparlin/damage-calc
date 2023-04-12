@@ -144,6 +144,7 @@ html, body {
 	 padding: 0 3em;
     max-width: 1285px;
     margin: 0px auto;
+    text-align: center;
 }
 div.wrapper > div > span {
     padding-right: 5px;
